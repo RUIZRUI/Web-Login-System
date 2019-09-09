@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" content="text/html" />
+        <title>用户注册</title>
+        <link type="text/css" rel="stylesheet" href="css/register.css" />
+    </head>
+    <body>
+        <div class="white_content"></div>
+        <div id="error_message">
+            <label>验证错误，请正确填写信息</label>
+            <button aria-label="Close">X</button>
+        </div>
+        <div id="user_register">
+            <form name="register" action="http://qixqi.club:8080/我今年278/Register" method="POST">
+                <label for="username">用户名 </label><br />
+                <input type="text" id="username" name="username" value="" tabindex="1" /><br />
+                <label for="email">邮箱 </label><br />
+                <input type="email" name="email" id="email" tabindex="2" /><br />
+                <label for="password">密码 </label>&nbsp;&nbsp;
+                <label class="tips">至少<label class="tips_num">8个字符</label>，
+                    至少<label class="tips_num">一个数字</label>，<label class="tips_num">一个字母</label>
+                </label><br />
+                <input type="password" name="password" id="password" tabindex="3" /><br />
+                <label for="confirm_password">确认密码 </label><br />
+                <input type="password" name="confirm_password" id="confirm_password" tabindex="4" /><br />
+                <input type="submit" name="submit" id="submit" value="注册" tabindex="5" /><br />
+            </form>
+        </div>
+        <div id="login_account">
+            <p> Hava a accout ? &nbsp;&nbsp;&nbsp;
+                <a class="label_link" href="./login.html">登录</a>
+            </p>
+        </div>
+        <script type="text/javascript" src="./javascript/register.js"></script>
+    </body>
+</html>

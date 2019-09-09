@@ -1,0 +1,101 @@
+body{
+    /* background-color: rgb(228, 228, 228); */
+    background-image: url('/images/body.jpg');
+}
+
+#white_content{
+    border: none; 
+    height: 1px; 
+    margin-top: 14%;
+}
+
+#error_message{
+    border: solid 1px rgb(203, 175, 179); 
+    background-color: rgb(255, 218, 223);
+    width: 255px; 
+    height: 30px; 
+    margin-left: 38.5%; 
+    border-radius: 3px;
+    padding-left: 40px; 
+    padding-top: 5px; 
+    position: relative; 
+    display: none;
+}
+
+#error_message label{
+    color: rgb(149, 9, 19);
+}
+
+#error_message button{
+    border: none; 
+    background-color: rgb(255, 218, 223);
+    margin-left: 25px; 
+    color: rgb(149, 9, 19); 
+    cursor: pointer; 
+    font-size: 16px;
+}
+
+#user_login{
+    width: 255px; 
+    height: 200px; 
+    margin-top: 10px; 
+    margin-left: 38.5%; 
+    padding-top: 20px; 
+    padding-left: 40px;        
+    border: solid 1px rgb(206, 213, 218); 
+    border-radius: 5px; 
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#login_field{
+    margin-top: 10px; 
+    margin-bottom: 15px; 
+    width: 200px; 
+    height: 26px;
+    padding-left: 10px; 
+    font-size: 14px;
+    border: solid 1px rgb(206, 213, 218); 
+    border-radius: 3px;
+}
+
+#user_login a{
+    margin-left: 100px;
+}
+
+.label_link{
+    color: rgb(0, 89, 222); 
+    text-decoration: none; 
+    font-size: 14px;
+}
+
+#password{
+    margin-top: 10px; 
+    width: 200px; 
+    height: 26px;
+    padding-left: 10px; 
+    font-size: 14px;
+    border: solid 1px rgb(206, 213, 218); 
+    border-radius: 3px;
+}
+
+#submit{
+    margin-top: 20px; 
+    margin-left: 60px; 
+    background-color: #94d3a2; 
+    border-color: rgba(27, 31, 35, .2);
+    width: 80px; 
+}
+
+#create_account{
+    width: 255px; 
+    height: 50px; 
+    margin-top: 20px; 
+    margin-left: 38.5%;
+    border: solid 1px rgb(206, 213, 218); 
+    border-radius: 3px; 
+    background-color: rgba(255, 255, 255, 0.1);
+    /* opacity整体透明 */
+    /* opacity: 0.5; */
+    padding-left: 40px;
+}
+
