@@ -1,6 +1,9 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,6 +41,7 @@ public class PasswordResetNew extends HttpServlet{
 
         // 接收表单数据
         String email = request.getParameter("email");
+        String code = request.getParameter("code");
         String password = request.getParameter("password");
 
         PrintWriter out = response.getWriter();
@@ -49,6 +53,12 @@ public class PasswordResetNew extends HttpServlet{
             "<body style=\"background-image: url('http://qixqi.club/images/body.jpg')\">\n" +
             "<h1 align='center'>" + title + "</h1>\n");  
 
+        if(!checkCode(email, code, out)){
+            out.println("<p align='center'>更改密码失败！</p>");
+            out.println("</body></html>");
+            return;
+            // System.exit(-1);     // 太猛了，tomcat 异常退出
+        }
         try{
             // 注册 JDBC 驱动器
             Class.forName(JDBC_DRIVER);
@@ -104,5 +114,69 @@ public class PasswordResetNew extends HttpServlet{
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         doGet(request, response);
+    }
+
+    protected Boolean checkCode(String email, String code, PrintWriter out){
+        Connection conn = null;
+        PreparedStatement pst = null;
+        
+        Date now_time = new Date();
+
+        SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        try{
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            String sql;
+            sql = "select code, start_time from i278_code where email = '" + email + "'";
+            pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            if(!rs.next()){
+                out.println("<p align='center'>服务端没有此邮箱的验证码</p>");
+                return false;
+            }else if(!code.equals(rs.getString("code"))){
+                out.println("<p align='center'>验证码和服务端的验证码不一致</p>");
+                return false;
+            }else{
+                Date start_time = simpleFormat.parse(rs.getString("start_time"));
+                long nowl = now_time.getTime();
+                long startl = start_time.getTime();
+                int minutes = (int)((nowl - startl) / (1000 * 60));
+                if(minutes <= 10){
+                    out.println("<p align='center'>验证码有效</p>");
+                    return true;
+                }else{
+                    out.println("<p align='center'>超过10分钟，验证码失效</p>");
+                    return false;
+                }
+            }
+            // pst.close();
+            // conn.close();
+        } catch(SQLException se){
+            out.println("<p align='center'>" + se.toString() + "</p>");
+            se.printStackTrace();
+            out.println("<p align='center'>核对验证码，出现异常</p>");
+            return false;
+        } catch(Exception e){
+            out.println("<p align='center'>" + e.toString() + "</p>");
+            e.printStackTrace();
+            out.println("<p align='center'>核对验证码，出现异常</p>");
+            return false;
+        } finally{
+            try{
+                if(pst != null){
+                    pst.close();
+                } 
+            } catch(SQLException se2){
+
+            }
+            try{
+                if(conn != null){
+                    conn.close();
+                }
+            } catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
     }
 }

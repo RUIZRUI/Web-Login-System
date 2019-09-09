@@ -1,5 +1,6 @@
 var password = document.getElementById('password');
 var email = document.getElementById('email');
+var code = document.getElementById('code');
 var confirm_password = document.getElementById('confirm_password');
 var form = document.getElementById('reset_password').getElementsByTagName('form')[0];
 var error_close = document.getElementById('error_message').getElementsByTagName('button')[0];
@@ -30,7 +31,7 @@ error_close.onclick = function(){
 
 // 表单提交检测
 form.onsubmit = function(){
-    if(checkPassword() && confirmPassword() && getEmail()){
+    if(checkCode() && checkPassword() && confirmPassword() && getEmail()){
         return true;
     }
     document.getElementById('error_message').style.display = 'block';
@@ -55,3 +56,12 @@ function getEmail(){
 }
 
 // getEmail();      // 提交事件发生时执行
+
+// 验证码
+function checkCode(){
+    var regAllNum = /^[0-9]+$/;         // 验证是否全是数字
+    if(code.value.trim().length == 6 && regAllNum.test(code.value.trim())){
+        return true;
+    }
+    return false;
+}
