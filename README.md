@@ -2,6 +2,8 @@
 
 效果: [http://qixqi.club/我今年278/login.html](http://zhengxiang4056.club/我今年278/login.html)
 
+目前效果中使用验证码来找回密码
+
 JavaScript 简单的本地检测数据格式，减轻服务器的压力
 
 # 系统流程
