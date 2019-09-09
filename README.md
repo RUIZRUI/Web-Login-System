@@ -26,3 +26,6 @@ servlet 文件夹下，
   
 # SendEmail 设置
 具体参考 [https://www.jianshu.com/p/d2be1d2a2fae](https://www.jianshu.com/p/d2be1d2a2fae)
+
+# 使用
+将 servlet 中的java源文件编译，然后添加到 tomcat下，修改web.xml，根据需要修改各个文件之间的链接关系即可
