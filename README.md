@@ -1,6 +1,6 @@
 # Servlet 实现注册-登录-找回密码系统
 
-效果: [http://qixqi.club/我今年278/login.html](http://zhengxiang4056.club/我今年278/login.html)
+效果: [https://qixqi.cn/twenties/login.html](https://qixqi.cn/twenties/login.html)
 
 目前效果中使用验证码来找回密码
 
